@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVEMBER BRANDS | Premium Beauty Products</title>
+    <link rel="stylesheet" href="css/style.css?v=20250618233354">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* FORCE PINK FOOTER DISPLAY */
+        footer.footer-pink {
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.85), 
+                rgba(255, 105, 180, 0.75), 
+                rgba(255, 182, 193, 0.65)) !important;
+            backdrop-filter: blur(25px) !important;
+            -webkit-backdrop-filter: blur(25px) !important;
+            color: white !important;
+            padding: 80px 0 30px 0 !important;
+            position: relative !important;
+            overflow: hidden !important;
+            border-top: 2px solid rgba(255, 255, 255, 0.3) !important;
+            margin-top: 60px !important;
+            min-height: 400px !important;
+            box-shadow: 0 -10px 30px rgba(255, 20, 147, 0.3) !important;
+            display: block !important;
+            width: 100% !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Hide old footer */
+        footer:not(.footer-pink) {
+            display: none !important;
+        }
+        
+        /* Force all footer content to be visible */
+        .footer-pink, .footer-pink * {
+            color: white !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .footer-content-pink {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 30px !important;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: 50px !important;
+            position: relative !important;
+            z-index: 10 !important;
+            align-items: start !important;
+        }
+        
+        .beauty-icons-floating {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important;
+            overflow: hidden !important;
+            z-index: 1 !important;
+        }
+        
+        .beauty-icon-float {
+            position: absolute !important;
+            font-size: 1.8rem !important;
+            color: rgba(255, 255, 255, 0.4) !important;
+            animation: floatBeautyIcon 15s linear infinite !important;
+            z-index: 1 !important;
+            pointer-events: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1 class="brand-name">NOVEMBER BRANDS</h1>
+                <p class="owner-name">by Taghreed Nar</p>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#skincare" class="nav-link">Skin Care</a></li>
+                <li><a href="#haircare" class="nav-link">Hair Care</a></li>
+                <li><a href="#perfumes" class="nav-link">Perfumes</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="icon-btn" id="favoritesBtn">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="favCount">0</span>
+                </button>
+                <button class="icon-btn" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+                <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+                <button class="signup-btn" onclick="window.location.href='register.html'">Sign Up</button>
+            </div>
+            
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-links">
+                    <li><a href="#home" class="nav-link" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="#skincare" class="nav-link" onclick="closeMobileMenu()">Skin Care</a></li>
+                    <li><a href="#haircare" class="nav-link" onclick="closeMobileMenu()">Hair Care</a></li>
+                    <li><a href="#perfumes" class="nav-link" onclick="closeMobileMenu()">Perfumes</a></li>
+                    <li><a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a></li>
+                </ul>
+                
+                <div class="mobile-auth-buttons">
+                    <a href="login.html" class="login-btn">Sign In</a>
+                    <a href="register.html" class="signup-btn">Sign Up</a>
+                </div>
+                
+                <div class="mobile-cart-actions">
+                    <button class="icon-btn" onclick="openModal('favoritesModal'); closeMobileMenu();">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge" id="mobileFavoritesCount">0</span>
+                    </button>
+                    <button class="icon-btn" onclick="openModal('cartModal'); closeMobileMenu();">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="mobileCartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="animated-icons">
+                <i class="fas fa-crown floating-icon icon-1"></i>
+                <i class="fas fa-gem floating-icon icon-2"></i>
+                <i class="fas fa-magic floating-icon icon-3"></i>
+                <i class="fas fa-heart floating-icon icon-4"></i>
+                <i class="fas fa-star floating-icon icon-5"></i>
+                <i class="fas fa-sparkles floating-icon icon-6"></i>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-subtitle">Discover Beauty Excellence</span>
+                <span class="hero-main">NOVEMBER BRANDS</span>
+                <span class="hero-tagline">Premium Cosmetics Collection</span>
+            </h1>
+            <p class="hero-description">
+                Elevate your beauty routine with our carefully curated collection of skincare, haircare, and perfumes designed for the modern woman.
+            </p>
+            <div class="hero-buttons">
+                <button class="cta-btn primary" onclick="scrollToSection('skincare')">
+                    <span>Explore Collection</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="cta-btn secondary" onclick="scrollToSection('about')">
+                    <span>Learn More</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About November Brands</h2>
+                <p class="about-text">
+                    Founded by Taghreed Nar, November Brands represents the pinnacle of beauty innovation. 
+                    Our commitment to excellence drives us to create products that enhance natural beauty 
+                    while providing exceptional quality and results.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>Premium Quality</h3>
+                        <p>Carefully selected ingredients</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Expert Curation</h3>
+                        <p>Beauty professional approved</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Customer First</h3>
+                        <p>Satisfaction guaranteed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Care Section -->
+    <section id="skincare" class="product-section skincare-section">
+        <div class="section-background">
+            <div class="blur-overlay"></div>
+            <div class="animated-bg-icons">
+                <i class="fas fa-pump-soap bg-icon"></i>
+                <i class="fas fa-spray-can bg-icon"></i>
+                <i class="fas fa-magic bg-icon"></i>
+                <i class="fas fa-star bg-icon"></i>
+                <i class="fas fa-heart bg-icon"></i>
+                <i class="fas fa-sparkles bg-icon"></i>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SKIN CARE</h2>
+                <p class="section-subtitle">Nourish and rejuvenate your skin with our premium collection</p>
+            </div>
+            
+            <div class="products-grid" id="skincareProducts">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hair Care Section -->
+    <section id="haircare" class="product-section haircare-section">
+        <div class="section-background">
+            <div class="blur-overlay"></div>
+            <div class="animated-bg-icons">
+                <i class="fas fa-spa bg-icon"></i>
+                <i class="fas fa-wind bg-icon"></i>
+                <i class="fas fa-spray-can bg-icon"></i>
+                <i class="fas fa-magic bg-icon"></i>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">HAIR CARE</h2>
+                <p class="section-subtitle">Transform your hair with our professional-grade treatments</p>
+            </div>
+            
+            <div class="products-grid" id="haircareProducts">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfumes Section -->
+    <section id="perfumes" class="product-section perfumes-section">
+        <div class="section-background">
+            <div class="blur-overlay"></div>
+            <div class="animated-bg-icons">
+                <i class="fas fa-spray-can bg-icon"></i>
+                <i class="fas fa-flower bg-icon"></i>
+                <i class="fas fa-gem bg-icon"></i>
+                <i class="fas fa-crown bg-icon"></i>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PERFUMES</h2>
+                <p class="section-subtitle">Discover your signature scent from our exclusive fragrance collection</p>
+            </div>
+            
+            <div class="products-grid" id="perfumeProducts">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section contact-section-pink">
+        <div class="section-background contact-background">
+            <div class="blur-overlay"></div>
+            <div class="animated-bg-icons contact-bg-icons">
+                <i class="fas fa-lipstick bg-icon"></i>
+                <i class="fas fa-palette bg-icon"></i>
+                <i class="fas fa-gem bg-icon"></i>
+                <i class="fas fa-crown bg-icon"></i>
+                <i class="fas fa-heart bg-icon"></i>
+                <i class="fas fa-kiss-wink-heart bg-icon"></i>
+                <i class="fas fa-magic bg-icon"></i>
+                <i class="fas fa-sparkles bg-icon"></i>
+                <i class="fas fa-star bg-icon"></i>
+                <i class="fas fa-tint bg-icon"></i>
+                <i class="fas fa-brush bg-icon"></i>
+                <i class="fas fa-spray-can bg-icon"></i>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title contact-title">Get in Touch</h2>
+            <p class="contact-text">Ready to enhance your beauty routine? Contact us on WhatsApp!</p>
+            <button class="whatsapp-btn" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat with Taghreed</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-pink">
+        <!-- Floating Beauty Icons -->
+        <div class="beauty-icons-floating">
+            <i class="beauty-icon-float fas fa-heart"></i>
+            <i class="beauty-icon-float fas fa-kiss-wink-heart"></i>
+            <i class="beauty-icon-float fas fa-gem"></i>
+            <i class="beauty-icon-float fas fa-star"></i>
+            <i class="beauty-icon-float fas fa-magic"></i>
+            <i class="beauty-icon-float fas fa-crown"></i>
+            <i class="beauty-icon-float fas fa-palette"></i>
+            <i class="beauty-icon-float fas fa-spray-can"></i>
+            <i class="beauty-icon-float fas fa-tint"></i>
+            <i class="beauty-icon-float fas fa-sparkles"></i>
+            <i class="beauty-icon-float fas fa-kiss"></i>
+            <i class="beauty-icon-float fas fa-female"></i>
+            <i class="beauty-icon-float fas fa-brush"></i>
+            <i class="beauty-icon-float fas fa-pump-soap"></i>
+            <i class="beauty-icon-float fas fa-spa"></i>
+        </div>
+        
+        <div class="container">
+            <div class="footer-content-pink">
+                <div class="footer-brand-pink">
+                    <h3><i class="fas fa-crown"></i> NOVEMBER BRANDS</h3>
+                    <p>Premium Beauty Products by Taghreed Nar</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/november3_11?igsh=MWZvZzR0dWJvbzdsMw==" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/groups/174530407837518/?ref=share&mibextid=NSMWBT" class="social-icon" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/201097927953" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section-pink">
+                    <h4><i class="fas fa-sparkles"></i> Beauty Collection</h4>
+                    <ul>
+                        <li><a href="#skincare"><i class="fas fa-leaf"></i> Skin Care</a></li>
+                        <li><a href="#haircare"><i class="fas fa-spa"></i> Hair Care</a></li>
+                        <li><a href="#perfumes"><i class="fas fa-spray-can"></i> Perfumes</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section-pink">
+                    <h4><i class="fas fa-phone-alt"></i> Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: +20 109 792 7953</p>
+                        <p><i class="fas fa-envelope"></i> beauty@novemberbrands.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Premium Beauty Store</p>
+                        <p><i class="fas fa-clock"></i> 24/7 Customer Support</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section-pink">
+                    <h4><i class="fas fa-star"></i> Why Choose Us</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Premium Quality</li>
+                        <li><i class="fas fa-check-circle"></i> Expert Curation</li>
+                        <li><i class="fas fa-check-circle"></i> Fast Delivery</li>
+                        <li><i class="fas fa-check-circle"></i> Customer Satisfaction</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom-pink">
+                <div class="footer-bottom-content">
+                    <div class="copyright-pink">
+                        <p>&copy; 2025 November Brands. All rights reserved.</p>
+                    </div>
+                    <div class="footer-tagline">
+                        <p><i class="fas fa-heart"></i> Crafted with love by Taghreed Nar <i class="fas fa-heart"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Favorites Modal -->
+    <div id="favoritesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Favorites</h3>
+                <span class="close" onclick="closeFavoritesModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="favoritesList">
+                    <!-- Favorites will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Shopping Cart</h3>
+                <span class="close" onclick="closeCartModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cartList">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-actions">
+                    <button class="checkout-btn" onclick="proceedToWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Order via WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Image Viewer -->
+    <div id="imageViewer" class="image-viewer">
+        <div class="image-viewer-container">
+            <div class="image-viewer-content">
+                <div class="image-viewer-header">
+                    <h3 id="imageViewerTitle" class="image-viewer-title">Product Image</h3>
+                    <button class="image-viewer-close" onclick="closeImageViewer()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="image-viewer-body">
+                    <img id="imageViewerImage" class="image-viewer-image" src="" alt="Product Image">
+                    <div class="zoom-controls">
+                        <button class="zoom-btn" id="zoomOut" title="Zoom Out">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="zoom-level-display" id="zoomLevel">100%</div>
+                        <button class="zoom-btn" id="zoomIn" title="Zoom In">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="zoom-btn" id="resetZoom" title="Reset Zoom">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="image-viewer-footer">
+                    <div class="image-viewer-actions">
+                        <button class="image-viewer-btn btn-close" onclick="closeImageViewer()">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

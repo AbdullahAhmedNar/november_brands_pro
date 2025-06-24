@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - NOVEMBER BRANDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section with Animated Background */
+        .admin-hero {
+            position: relative;
+            background: linear-gradient(135deg, #000000 0%, #ff1493 50%, #000000 100%);
+            padding: 80px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 8s ease-in-out infinite;
+            color: #ff1493;
+            font-size: 50px;
+            filter: blur(1px);
+        }
+        
+        .floating-icon:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 25%; right: 15%; animation-delay: 1.5s; }
+        .floating-icon:nth-child(3) { top: 45%; left: 8%; animation-delay: 3s; }
+        .floating-icon:nth-child(4) { top: 65%; right: 12%; animation-delay: 4.5s; }
+        .floating-icon:nth-child(5) { top: 35%; left: 85%; animation-delay: 6s; }
+        .floating-icon:nth-child(6) { top: 75%; left: 25%; animation-delay: 7.5s; }
+        .floating-icon:nth-child(7) { top: 55%; right: 30%; animation-delay: 2s; }
+        .floating-icon:nth-child(8) { top: 20%; left: 50%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.15;
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg) scale(1.1);
+                opacity: 0.25;
+            }
+            50% { 
+                transform: translateY(-50px) rotate(180deg) scale(1.2);
+                opacity: 0.3;
+            }
+            75% { 
+                transform: translateY(-30px) rotate(270deg) scale(1.1);
+                opacity: 0.25;
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            background: linear-gradient(45deg, #ffffff, #ff1493, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShine 3s ease-in-out infinite;
+        }
+        
+        @keyframes textShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .admin-stats-quick {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .quick-stat {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 20, 147, 0.3);
+            text-align: center;
+            min-width: 140px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-stat::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,20,147,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .quick-stat:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 20, 147, 0.6);
+            box-shadow: 0 20px 40px rgba(255, 20, 147, 0.3);
+        }
+        
+        .quick-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff1493;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quick-stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Main Container */
+        .admin-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -30px 60px rgba(255, 20, 147, 0.2);
+            min-height: calc(100vh - 300px);
+            position: relative;
+            margin-top: -30px;
+            z-index: 4;
+        }
+        
+        /* Navigation */
+        .admin-nav {
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, rgba(0,0,0,0.02), rgba(255,20,147,0.02));
+            border-radius: 25px;
+            margin: 30px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-btn {
+            padding: 18px 35px;
+            background: linear-gradient(135deg, #ff1493, #000000);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 150px;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(135deg, #000000, #ff1493);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .nav-btn i {
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        
+        /* Sections */
+        .admin-section {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            margin: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admin-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff1493, #000000, #ff1493);
+        }
+        
+        .admin-section.active {
+            display: block;
+            animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff1493, #000000);
+            border-radius: 3px;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #ff1493 0%, #000000 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.3);
+            cursor: pointer;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotateCard 12s linear infinite;
+        }
+        
+        @keyframes rotateCard {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 20, 147, 0.4);
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Forms */
+        .form-section {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 20, 147, 0.1);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e1e5e9;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: #ff1493;
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 20, 147, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff1493, #000000);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 180px;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #000000, #ff1493);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: white;
+            margin-top: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 20px;
+            text-align: right;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-weight: 700;
+            color: #333;
+            font-size: 15px;
+            position: relative;
+        }
+        
+        tr:hover {
+            background: rgba(255, 20, 147, 0.05);
+        }
+        
+        .action-btn {
+            padding: 10px 18px;
+            margin: 4px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-edit {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+        }
+        
+        .btn-delete {
+            background: linear-gradient(135deg, #dc3545, #ff6b7a);
+            color: white;
+        }
+        
+        .btn-view {
+            background: linear-gradient(135deg, #28a745, #5cdb5c);
+            color: white;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .admin-container {
+                margin: 0 10px;
+                border-radius: 20px 20px 0 0;
+            }
+            
+            .admin-nav {
+                gap: 15px;
+                padding: 30px 15px;
+                margin: 20px;
+            }
+            
+            .nav-btn {
+                padding: 15px 25px;
+                font-size: 14px;
+                min-width: 130px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .admin-stats-quick {
+                gap: 20px;
+            }
+            
+            .quick-stat {
+                padding: 20px;
+                min-width: 120px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .admin-section {
+                margin: 15px;
+                padding: 25px;
+            }
+            
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 13px;
+                min-width: 110px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .table-container {
+                font-size: 13px;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+            }
+            
+            .action-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+                margin: 2px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .admin-stats-quick {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .quick-stat {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .admin-nav {
+                padding: 20px 10px;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+                min-width: 100px;
+            }
+            
+            .form-group input, 
+            .form-group select, 
+            .form-group textarea {
+                padding: 15px;
+                font-size: 16px; /* Prevent zoom on iOS */
+            }
+            
+            .btn-primary {
+                padding: 15px 30px;
+                min-width: 150px;
+            }
+            
+            .floating-icon {
+                font-size: 35px;
+            }
+        }
+        
+        /* Image Upload Styles */
+        .image-upload-container {
+            margin-top: 10px;
+        }
+        
+        .image-upload-area {
+            border: 3px dashed #ff1493;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.05), rgba(0, 0, 0, 0.02));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-upload-area:hover {
+            border-color: #000000;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(255, 20, 147, 0.02));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.2);
+        }
+        
+        .image-upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .image-upload-area:hover::before {
+            left: 100%;
+        }
+        
+        .upload-content i {
+            font-size: 3rem;
+            color: #ff1493;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .upload-content p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .upload-content span {
+            font-size: 0.9rem;
+            color: #666;
+            display: block;
+        }
+        
+        .image-upload-area.has-image {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(255, 255, 255, 0.8));
+        }
+        
+        .image-upload-area.has-image .upload-content {
+            display: none;
+        }
+        
+        #imagePreview {
+            border: 3px solid #27ae60;
+            box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+        }
+        
+        /* Remove image button */
+        .remove-image-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .remove-image-btn:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+        
+        /* Admin notifications */
+        .admin-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            min-width: 300px;
+            max-width: 400px;
+            animation: slideInRight 0.4s ease;
+            border-left: 5px solid #27ae60;
+        }
+        
+        .admin-notification.error {
+            border-left-color: #e74c3c;
+        }
+        
+        .admin-notification.error .notification-content i {
+            color: #e74c3c;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .notification-content i {
+            font-size: 1.5rem;
+            color: #27ae60;
+        }
+        
+        .notification-content span {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Preview website button styling */
+        .preview-btn {
+            background: linear-gradient(135deg, #17a2b8, #138496) !important;
+            border: 2px solid #17a2b8 !important;
+        }
+        
+        .preview-btn:hover {
+            background: linear-gradient(135deg, #138496, #117a8b) !important;
+            border-color: #138496 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+        
+        .preview-btn i {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Professional Footer Styles */
+        .admin-footer {
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.8), 
+                rgba(255, 105, 180, 0.7), 
+                rgba(255, 182, 193, 0.6));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            margin-top: -30px;
+            padding: 40px 0 0 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+
+        
+        /* Floating Beauty Icons */
+        .beauty-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .beauty-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            animation: floatBeauty 15s linear infinite;
+        }
+        
+        .beauty-icon:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 20s; }
+        .beauty-icon:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+        .beauty-icon:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 22s; }
+        .beauty-icon:nth-child(4) { left: 40%; animation-delay: 6s; animation-duration: 16s; }
+        .beauty-icon:nth-child(5) { left: 50%; animation-delay: 8s; animation-duration: 24s; }
+        .beauty-icon:nth-child(6) { left: 60%; animation-delay: 10s; animation-duration: 19s; }
+        .beauty-icon:nth-child(7) { left: 70%; animation-delay: 12s; animation-duration: 21s; }
+        .beauty-icon:nth-child(8) { left: 80%; animation-delay: 14s; animation-duration: 17s; }
+        .beauty-icon:nth-child(9) { left: 90%; animation-delay: 16s; animation-duration: 23s; }
+        .beauty-icon:nth-child(10) { left: 15%; animation-delay: 18s; animation-duration: 25s; }
+        
+        @keyframes floatBeauty {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .footer-section h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .footer-section p {
+            color: #bdc3c7;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin: 10px 0;
+        }
+        
+        .footer-section ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #ffffff;
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.2);
+            padding-left: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .footer-bottom {
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .copyright p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .admin-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        #currentTime {
+            color: #ffffff;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .admin-info p {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        
+        /* Enhanced User Management Buttons */
+        .user-action-btn {
+            padding: 10px 18px;
+            margin: 3px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 80px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        .user-action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .user-action-btn:hover::before {
+            left: 100%;
+        }
+        
+        .user-action-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* View Button - Blue Theme */
+        .user-btn-view {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: 2px solid transparent;
+        }
+        
+        .user-btn-view:hover {
+            background: linear-gradient(135deg, #0056b3, #007bff);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+            border-color: rgba(0, 123, 255, 0.6);
+        }
+        
+        .user-btn-view:active {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.6);
+        }
+        
+        /* Delete Button - Red Theme */
+        .user-btn-delete {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border: 2px solid transparent;
+        }
+        
+        .user-btn-delete:hover {
+            background: linear-gradient(135deg, #c82333, #dc3545);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+            border-color: rgba(220, 53, 69, 0.6);
+        }
+        
+        .user-btn-delete:active {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.6);
+        }
+        
+        /* Loading state for user buttons */
+        .user-action-btn.loading {
+            background: linear-gradient(135deg, #6c757d, #495057) !important;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .user-action-btn.loading::before {
+            display: none;
+        }
+        
+        /* Enhanced button icons */
+        .user-action-btn i {
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        
+        .user-action-btn:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* Success state animation */
+        .user-action-btn.success {
+            background: linear-gradient(135deg, #28a745, #20c997) !important;
+            animation: successPulse 0.6s ease;
+        }
+        
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Error state animation */
+        .user-action-btn.error {
+            background: linear-gradient(135deg, #dc3545, #e74c3c) !important;
+            animation: errorShake 0.6s ease;
+        }
+        
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        /* Responsive design for user action buttons */
+        @media (max-width: 768px) {
+            .user-action-btn {
+                padding: 8px 12px;
+                font-size: 11px;
+                min-width: 60px;
+                margin: 2px;
+            }
+            
+            .user-action-btn span {
+                display: none;
+            }
+            
+            .user-action-btn i {
+                font-size: 14px;
+                margin: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-action-btn {
+                padding: 6px 10px;
+                font-size: 10px;
+                min-width: 50px;
+                border-radius: 20px;
+            }
+            
+            .user-action-btn i {
+                font-size: 12px;
+            }
+        }
+        
+        /* Enhanced loading animation for buttons */
+        .user-action-btn.loading i.fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Button group styling */
+        .user-actions-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        /* Enhanced table styling */
+        tr:hover {
+            background: rgba(255, 20, 147, 0.05);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        tbody tr {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        tbody tr:hover .user-action-btn {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        #usersTableBody tr:hover {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.05), rgba(255, 20, 147, 0.05));
+        }
+        
+        /* Badge styling for user status */
+        .badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-success {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: 2px solid rgba(40, 167, 69, 0.3);
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+        }
+        
+        /* Table cell padding for actions */
+        td:last-child {
+            padding: 15px 20px;
+            min-width: 180px;
+        }
+        
+        /* Enhanced Edit Product Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-container {
+            background: white;
+            border-radius: 25px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        @keyframes modalSlideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.9);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #ff1493, #000000);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmerHeader 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmerHeader {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .modal-footer {
+            padding: 25px 30px;
+            background: #f8f9fa;
+            border-radius: 0 0 25px 25px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+            justify-content: center;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #495057, #343a40);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(108, 117, 125, 0.4);
+        }
+        
+        .required {
+            color: #dc3545;
+            font-weight: 700;
+        }
+        
+        /* Edit modal specific styles */
+        #currentImageContainer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            border: 2px dashed #e1e5e9;
+        }
+        
+        #currentProductImage {
+            transition: all 0.3s ease;
+        }
+        
+        #currentProductImage:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        #editImagePreviewContainer .remove-image-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #dc3545;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+        }
+        
+        #editImagePreviewContainer .remove-image-btn:hover {
+            background: #c82333;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
+        }
+        
+        /* Loading state for modal buttons */
+        .modal-footer .btn-primary.loading {
+            background: linear-gradient(135deg, #6c757d, #495057) !important;
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        
+        .modal-footer .btn-primary.loading i.fa-save {
+            display: none;
+        }
+        
+        .modal-footer .btn-primary.loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+        
+        /* Success state for modal */
+        .modal-footer .btn-primary.success {
+            background: linear-gradient(135deg, #28a745, #20c997) !important;
+        }
+        
+        /* Responsive modal */
+        @media (max-width: 768px) {
+            .modal-container {
+                width: 95%;
+                margin: 10px;
+                max-height: 95vh;
+            }
+            
+            .modal-header {
+                padding: 20px;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .modal-footer {
+                padding: 20px;
+                flex-direction: column;
+            }
+            
+            .btn-secondary,
+            .modal-footer .btn-primary {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="admin-hero">
+        <div class="floating-icons">
+            <i class="floating-icon fas fa-heart"></i>
+            <i class="floating-icon fas fa-spray-can"></i>
+            <i class="floating-icon fas fa-gem"></i>
+            <i class="floating-icon fas fa-kiss-wink-heart"></i>
+            <i class="floating-icon fas fa-star"></i>
+            <i class="floating-icon fas fa-magic"></i>
+            <i class="floating-icon fas fa-palette"></i>
+            <i class="floating-icon fas fa-crown"></i>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">NOVEMBER BRANDS</h1>
+                            <p class="hero-subtitle">Admin Control Panel - Welcome Taghreed Nar</p>
+            
+            <div class="admin-stats-quick">
+                <div class="quick-stat">
+                    <div class="quick-stat-number" id="heroTotalProducts">15</div>
+                    <div class="quick-stat-label">المنتجات</div>
+                </div>
+                <div class="quick-stat">
+                    <div class="quick-stat-number" id="heroTotalOrders">0</div>
+                    <div class="quick-stat-label">الطلبات</div>
+                </div>
+                <div class="quick-stat">
+                    <div class="quick-stat-number" id="heroTotalUsers">1</div>
+                    <div class="quick-stat-label">المستخدمين</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> تعديل المنتج</h3>
+                <button type="button" class="modal-close" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm">
+                    <input type="hidden" id="editProductId" name="product_id">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editProductName">اسم المنتج <span class="required">*</span></label>
+                            <input type="text" id="editProductName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editProductCategory">الفئة <span class="required">*</span></label>
+                            <select id="editProductCategory" name="category" required>
+                                <option value="">اختر الفئة</option>
+                                <option value="skincare">العناية بالبشرة</option>
+                                <option value="haircare">العناية بالشعر</option>
+                                <option value="perfumes">العطور</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editProductPrice">السعر <span class="required">*</span></label>
+                            <input type="number" id="editProductPrice" name="price" step="0.01" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editProductStock">الكمية المتوفرة</label>
+                            <input type="number" id="editProductStock" name="stock" min="0" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editProductDescription">الوصف</label>
+                        <textarea id="editProductDescription" name="description" rows="3" placeholder="وصف المنتج..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>الصورة الحالية</label>
+                        <div id="currentImageContainer" style="margin-bottom: 15px;">
+                            <img id="currentProductImage" src="" alt="الصورة الحالية" style="max-width: 200px; max-height: 200px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        </div>
+                        
+                        <label for="editProductImage">تغيير الصورة (اختياري)</label>
+                        <div class="image-upload-area" onclick="document.getElementById('editProductImage').click()">
+                            <div class="upload-content">
+                                <i class="fas fa-camera"></i>
+                                <p>انقر لاختيار صورة جديدة</p>
+                                <span>JPG, PNG, GIF (الحد الأقصى: 5MB)</span>
+                            </div>
+                        </div>
+                        <input type="file" id="editProductImage" name="image" accept="image/*" style="display: none;" onchange="previewEditImage(this)">
+                        
+                        <div id="editImagePreviewContainer" style="display: none; margin-top: 15px; position: relative;">
+                            <img id="editImagePreview" src="" alt="معاينة الصورة الجديدة" style="max-width: 200px; max-height: 200px; border-radius: 10px; box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);">
+                            <button type="button" class="remove-image-btn" onclick="removeEditImage()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i> إلغاء
+                </button>
+                <button type="button" class="btn-primary" onclick="saveProductChanges()">
+                    <i class="fas fa-save"></i> حفظ التغييرات
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="admin-container">
+        <!-- Navigation -->
+        <nav class="admin-nav">
+            <button class="nav-btn active" onclick="showSection('dashboard')">
+                <i class="fas fa-chart-line"></i>
+                لوحة التحكم
+            </button>
+            <button class="nav-btn" onclick="showSection('products')">
+                <i class="fas fa-box"></i>
+                إدارة المنتجات
+            </button>
+            <button class="nav-btn" onclick="showSection('orders')">
+                <i class="fas fa-shopping-cart"></i>
+                إدارة الطلبات
+            </button>
+            <button class="nav-btn" onclick="showSection('users')">
+                <i class="fas fa-users"></i>
+                إدارة المستخدمين
+            </button>
+            <button class="nav-btn preview-btn" onclick="previewWebsite()">
+                <i class="fas fa-external-link-alt"></i>
+                معاينة الموقع
+            </button>
+            <button class="nav-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                تسجيل الخروج
+            </button>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="admin-section active">
+            <h2 class="section-title">لوحة التحكم الرئيسية</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-number" id="totalProducts">15</div>
+                    <div class="stat-label">إجمالي المنتجات</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-number" id="totalOrders">0</div>
+                    <div class="stat-label">إجمالي الطلبات</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" id="totalUsers">1</div>
+                    <div class="stat-label">المستخدمين المسجلين</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-number" id="totalFavorites">0</div>
+                    <div class="stat-label">المنتجات المفضلة</div>
+                </div>
+            </div>
+            
+
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="admin-section">
+            <h2 class="section-title">إدارة المنتجات</h2>
+            
+            <div class="form-section">
+                <h3>إضافة منتج جديد</h3>
+                <form id="addProductForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="productName">اسم المنتج</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productCategory">الفئة</label>
+                        <select id="productCategory" required>
+                            <option value="">اختر الفئة</option>
+                            <option value="skincare">العناية بالبشرة</option>
+                            <option value="haircare">العناية بالشعر</option>
+                            <option value="perfumes">العطور</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productPrice">السعر ($)</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productStock">الكمية المتوفرة</label>
+                        <input type="number" id="productStock" required>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="productDescription">وصف المنتج</label>
+                        <textarea id="productDescription" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="productImage">صورة المنتج</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="productImage" accept="image/*" style="display: none;">
+                            <div class="image-upload-area" onclick="document.getElementById('productImage').click()">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>انقر لرفع صورة المنتج</p>
+                                    <span>PNG, JPG, JPEG حتى 10MB</span>
+                                </div>
+                                <img id="imagePreview" style="display: none; max-width: 200px; max-height: 200px; border-radius: 10px; margin-top: 15px;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="grid-column: 1 / -1; text-align: center;">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            إضافة المنتج
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اسم المنتج</th>
+                            <th>الفئة</th>
+                            <th>السعر</th>
+                            <th>الكمية</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <!-- Products will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="admin-section">
+            <h2 class="section-title">إدارة الطلبات</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number" id="pendingOrders">0</div>
+                    <div class="stat-label">طلبات قيد الانتظار</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-number" id="completedOrders">0</div>
+                    <div class="stat-label">طلبات مكتملة</div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رقم الطلب</th>
+                            <th>اسم العميل</th>
+                            <th>إجمالي المبلغ</th>
+                            <th>الحالة</th>
+                            <th>التاريخ</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Orders will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section id="users" class="admin-section">
+            <h2 class="section-title">إدارة المستخدمين</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>البريد الإلكتروني / الهاتف</th>
+                            <th>تاريخ التسجيل</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Users will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="admin-footer">
+        <!-- Floating Beauty Icons -->
+        <div class="beauty-icons">
+            <i class="beauty-icon fas fa-heart"></i>
+            <i class="beauty-icon fas fa-kiss-wink-heart"></i>
+            <i class="beauty-icon fas fa-gem"></i>
+            <i class="beauty-icon fas fa-star"></i>
+            <i class="beauty-icon fas fa-magic"></i>
+            <i class="beauty-icon fas fa-crown"></i>
+            <i class="beauty-icon fas fa-palette"></i>
+            <i class="beauty-icon fas fa-spray-can"></i>
+            <i class="beauty-icon fas fa-tint"></i>
+            <i class="beauty-icon fas fa-sparkles"></i>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-crown"></i> NOVEMBER BRANDS</h3>
+                    <p>Admin Control Panel</p>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4><i class="fas fa-cogs"></i> System Management</h4>
+                <ul>
+                    <li><a href="#" onclick="showSection('products')"><i class="fas fa-box"></i> Manage Products</a></li>
+                    <li><a href="#" onclick="showSection('users')"><i class="fas fa-users"></i> Manage Users</a></li>
+                    <li><a href="#" onclick="showSection('orders')"><i class="fas fa-shopping-cart"></i> Manage Orders</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4><i class="fas fa-link"></i> Quick Links</h4>
+                <ul>
+                    <li><a href="#" onclick="previewWebsite()"><i class="fas fa-external-link-alt"></i> Main Website</a></li>
+                    <li><a href="#" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    <p>&copy; 2025 NOVEMBER BRANDS. All rights reserved.</p>
+                </div>
+                <div class="admin-info">
+                    <p><i class="fas fa-user-shield"></i> Administrator: Taghreed Nar | <i class="fas fa-clock"></i> <span id="currentTime"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/admin.js"></script>
+    <script>
+        // Show section function
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.admin-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Load section data
+            if (sectionName === 'products') {
+                loadProducts();
+            } else if (sectionName === 'orders') {
+                loadOrders();
+            } else if (sectionName === 'users') {
+                loadUsers();
+            }
+        }
+        
+
+
+        // Add product function
+        document.getElementById('addProductForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Use the enhanced form submission from admin.js
+            const productData = await submitProductForm(this);
+            if (!productData) {
+                return; // Validation failed
+            }
+            
+            try {
+                const response = await fetch('./api/api.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'add_product',
+                        ...productData
+                    })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification('تم إضافة المنتج بنجاح!', 'success');
+                    this.reset();
+                    resetImageUpload();
+                    loadProducts();
+                } else {
+                    showNotification('حدث خطأ: ' + (result.message || 'خطأ غير معروف'), 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('حدث خطأ في الاتصال', 'error');
+            }
+        });
+        
+        // Load products
+        async function loadProducts() {
+            try {
+                console.log('Loading products in admin panel...');
+                
+                const response = await fetch('./api/api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        type: 'get_products'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Products loaded in admin:', data);
+                
+                if (data.success) {
+                    const tbody = document.getElementById('productsTableBody');
+                    tbody.innerHTML = '';
+                    
+                    if (data.products.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #666;">لا توجد منتجات حالياً</td></tr>';
+                    } else {
+                        data.products.forEach(product => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${product.name}</td>
+                                <td>${getCategoryName(product.category)}</td>
+                                <td>${product.price}</td>
+                                <td>${product.stock || 0}</td>
+                                <td>
+                                    <button class="action-btn btn-edit" onclick="editProduct('${product.id}')">
+                                        <i class="fas fa-edit"></i> تعديل
+                                    </button>
+                                    <button class="action-btn btn-delete" onclick="deleteProduct('${product.id}')">
+                                        <i class="fas fa-trash"></i> حذف
+                                    </button>
+                                </td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                    }
+                    
+                    // Update stats
+                    const productCount = data.products.length;
+                    const totalProductsElement = document.getElementById('totalProducts');
+                    const heroTotalProductsElement = document.getElementById('heroTotalProducts');
+                    
+                    if (totalProductsElement) totalProductsElement.textContent = productCount;
+                    if (heroTotalProductsElement) heroTotalProductsElement.textContent = productCount;
+                    
+                    console.log(`Loaded ${productCount} products successfully`);
+                } else {
+                    console.error('Failed to load products:', data.message);
+                    const tbody = document.getElementById('productsTableBody');
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #e74c3c;">خطأ في تحميل المنتجات: ' + (data.message || 'خطأ غير معروف') + '</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
+                const tbody = document.getElementById('productsTableBody');
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #e74c3c;">خطأ في الاتصال: ' + error.message + '</td></tr>';
+            }
+        }
+        
+        // Load orders
+        async function loadOrders() {
+            try {
+                const response = await fetch('./api/api.php?action=get_orders');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const tbody = document.getElementById('ordersTableBody');
+                    tbody.innerHTML = '';
+                    
+                    if (data.orders.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">لا توجد طلبات حالياً</td></tr>';
+                    } else {
+                        data.orders.forEach(order => {
+                            const row = `
+                                <tr>
+                                    <td>${order.order_id}</td>
+                                    <td>${order.customer_name}</td>
+                                    <td>$${order.total_amount}</td>
+                                    <td>${getStatusName(order.status)}</td>
+                                    <td>${new Date(order.created_at).toLocaleDateString('en-GB')}</td>
+                                    <td>
+                                        <button class="action-btn btn-view" onclick="viewOrder('${order.order_id}')">عرض</button>
+                                    </td>
+                                </tr>
+                            `;
+                            tbody.innerHTML += row;
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading orders:', error);
+            }
+        }
+        
+        // Load users
+        async function loadUsers() {
+            try {
+                console.log('Loading users in admin panel...');
+                
+                const response = await fetch('./api/api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        type: 'get_users'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Users loaded in admin:', data);
+                
+                if (data.success) {
+                    const tbody = document.getElementById('usersTableBody');
+                    tbody.innerHTML = '';
+                    
+                    if (data.users.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #666;">لا يوجد مستخدمون مسجلون حالياً</td></tr>';
+                    } else {
+                        data.users.forEach(user => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>
+                                    <div style="display: flex; flex-direction: column;">
+                                        <strong>${user.full_name}</strong>
+                                        <small style="color: #666; margin-top: 2px;">${user.role}</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; flex-direction: column;">
+                                        <span>${user.contact}</span>
+                                        ${user.newsletter ? '<small style="color: #28a745; margin-top: 2px;">📧 مشترك في النشرة</small>' : ''}
+                                    </div>
+                                </td>
+                                <td>${new Date(user.created_at).toLocaleDateString('en-GB')}</td>
+                                <td>
+                                    <span class="badge badge-success">
+                                        مفعل
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="user-actions-group">
+                                        <button class="user-action-btn user-btn-view" onclick="viewUser('${user.id}')" title="عرض التفاصيل">
+                                            <i class="fas fa-eye"></i>
+                                            <span>عرض</span>
+                                        </button>
+                                        ${!user.is_admin ? `
+                                        <button class="user-action-btn user-btn-delete" onclick="deleteUser('${user.id}')" title="حذف المستخدم">
+                                            <i class="fas fa-trash-alt"></i>
+                                            <span>حذف</span>
+                                        </button>` : `
+                                        <span class="badge badge-secondary" style="background: linear-gradient(135deg, #6c757d, #495057); color: white; border: 2px solid rgba(108, 117, 125, 0.3);">
+                                            <i class="fas fa-shield-alt"></i> محمي
+                                        </span>`}
+                                    </div>
+                                </td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                    }
+                    
+                    // Update stats
+                    const userCount = data.users.length;
+                    const totalUsersElement = document.getElementById('totalUsers');
+                    const heroTotalUsersElement = document.getElementById('heroTotalUsers');
+                    
+                    if (totalUsersElement) totalUsersElement.textContent = userCount;
+                    if (heroTotalUsersElement) heroTotalUsersElement.textContent = userCount;
+                    
+                    console.log(`Loaded ${userCount} users successfully`);
+                } else {
+                    console.error('Failed to load users:', data.message);
+                    const tbody = document.getElementById('usersTableBody');
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #dc3545;">خطأ في تحميل المستخدمين: ' + (data.message || 'خطأ غير معروف') + '</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
+                const tbody = document.getElementById('usersTableBody');
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #dc3545;">خطأ في الاتصال: ' + error.message + '</td></tr>';
+            }
+        }
+        
+        // Helper functions
+        function getCategoryName(category) {
+            const names = {
+                'skincare': 'العناية بالبشرة',
+                'haircare': 'العناية بالشعر',
+                'perfumes': 'العطور'
+            };
+            return names[category] || category;
+        }
+        
+        function getStatusName(status) {
+            const names = {
+                'pending': 'قيد الانتظار',
+                'processing': 'قيد المعالجة',
+                'shipped': 'تم الشحن',
+                'delivered': 'تم التسليم',
+                'cancelled': 'ملغي'
+            };
+            return names[status] || status;
+        }
+        
+        async function editProduct(productId) {
+            try {
+                console.log('Opening edit modal for product:', productId);
+                
+                // Show loading in button
+                const editBtn = event.target.closest('button');
+                const originalContent = editBtn.innerHTML;
+                editBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+                editBtn.disabled = true;
+                
+                // Fetch product details
+                const response = await fetch('./api/api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        type: 'get_product_details',
+                        product_id: productId
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Product details loaded:', data);
+                
+                if (data.success && data.product) {
+                    const product = data.product;
+                    
+                    // Fill the form
+                    document.getElementById('editProductId').value = product.id;
+                    document.getElementById('editProductName').value = product.name || '';
+                    document.getElementById('editProductCategory').value = product.category || '';
+                    document.getElementById('editProductPrice').value = product.price || '';
+                    document.getElementById('editProductStock').value = product.stock || 0;
+                    document.getElementById('editProductDescription').value = product.description || '';
+                    
+                    // Show current image
+                    const currentImg = document.getElementById('currentProductImage');
+                    if (product.image_url) {
+                        currentImg.src = product.image_url;
+                        document.getElementById('currentImageContainer').style.display = 'block';
+                    } else {
+                        document.getElementById('currentImageContainer').style.display = 'none';
+                    }
+                    
+                    // Reset new image preview
+                    document.getElementById('editImagePreviewContainer').style.display = 'none';
+                    document.getElementById('editProductImage').value = '';
+                    
+                    // Show modal
+                    document.getElementById('editProductModal').style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                } else {
+                    alert('❌ فشل في تحميل بيانات المنتج!\n\nالسبب: ' + (data.message || 'خطأ غير معروف'));
+                }
+                
+            } catch (error) {
+                console.error('Error loading product for edit:', error);
+                alert('❌ خطأ في الاتصال: ' + error.message);
+            } finally {
+                // Reset button
+                if (editBtn) {
+                    editBtn.innerHTML = originalContent;
+                    editBtn.disabled = false;
+                }
+            }
+        }
+        
+        function closeEditModal() {
+            document.getElementById('editProductModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            document.getElementById('editProductForm').reset();
+            document.getElementById('editImagePreviewContainer').style.display = 'none';
+        }
+        
+        function previewEditImage(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                
+                // Validate file size (5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('❌ حجم الملف كبير جداً!\n\nالحد الأقصى المسموح: 5MB');
+                    input.value = '';
+                    return;
+                }
+                
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    alert('❌ نوع الملف غير مدعوم!\n\nيرجى اختيار صورة (JPG, PNG, GIF)');
+                    input.value = '';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('editImagePreview').src = e.target.result;
+                    document.getElementById('editImagePreviewContainer').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        function removeEditImage() {
+            document.getElementById('editProductImage').value = '';
+            document.getElementById('editImagePreviewContainer').style.display = 'none';
+        }
+        
+        async function saveProductChanges() {
+            try {
+                // Validate form
+                const form = document.getElementById('editProductForm');
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                const saveBtn = document.querySelector('.modal-footer .btn-primary');
+                const originalContent = saveBtn.innerHTML;
+                
+                // Show loading state
+                saveBtn.classList.add('loading');
+                saveBtn.innerHTML = 'جاري الحفظ...';
+                saveBtn.disabled = true;
+                
+                // Prepare form data
+                const formData = new FormData();
+                formData.append('type', 'update_product');
+                formData.append('product_id', document.getElementById('editProductId').value);
+                formData.append('name', document.getElementById('editProductName').value);
+                formData.append('category', document.getElementById('editProductCategory').value);
+                formData.append('price', document.getElementById('editProductPrice').value);
+                formData.append('stock', document.getElementById('editProductStock').value);
+                formData.append('description', document.getElementById('editProductDescription').value);
+                
+                // Add image if selected
+                const imageFile = document.getElementById('editProductImage').files[0];
+                if (imageFile) {
+                    formData.append('image', imageFile);
+                }
+                
+                console.log('Updating product with data:', {
+                    product_id: formData.get('product_id'),
+                    name: formData.get('name'),
+                    category: formData.get('category'),
+                    price: formData.get('price'),
+                    stock: formData.get('stock'),
+                    description: formData.get('description'),
+                    hasImage: !!imageFile
+                });
+                
+                const response = await fetch('./api/api.php', {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Update response:', data);
+                
+                if (data.success) {
+                    // Show success state
+                    saveBtn.classList.remove('loading');
+                    saveBtn.classList.add('success');
+                    saveBtn.innerHTML = '<i class="fas fa-check"></i> تم الحفظ بنجاح';
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        alert('✅ تم تحديث المنتج بنجاح!\n\n• تم حفظ جميع التغييرات\n• سيتم تحديث القائمة الآن');
+                        
+                        // Close modal and refresh
+                        closeEditModal();
+                        loadProducts();
+                        
+                        // Reset button state
+                        saveBtn.classList.remove('success');
+                        saveBtn.innerHTML = originalContent;
+                        saveBtn.disabled = false;
+                    }, 1500);
+                    
+                } else {
+                    throw new Error(data.message || 'فشل في تحديث المنتج');
+                }
+                
+            } catch (error) {
+                console.error('Error updating product:', error);
+                
+                const saveBtn = document.querySelector('.modal-footer .btn-primary');
+                saveBtn.classList.remove('loading');
+                saveBtn.classList.add('error');
+                saveBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> فشل الحفظ';
+                
+                alert('❌ فشل في تحديث المنتج!\n\nالسبب: ' + error.message);
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    saveBtn.classList.remove('error');
+                    saveBtn.innerHTML = '<i class="fas fa-save"></i> حفظ التغييرات';
+                    saveBtn.disabled = false;
+                }, 2000);
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('editProductModal');
+            if (event.target === modal) {
+                closeEditModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('editProductModal');
+                if (modal.style.display === 'flex') {
+                    closeEditModal();
+                }
+            }
+        });
+        
+        async function deleteProduct(productId) {
+            // Get product name for better confirmation message
+            const productRow = event.target.closest('tr');
+            const productName = productRow?.cells[0]?.textContent || 'هذا المنتج';
+            
+            if (confirm(`هل أنت متأكد من حذف "${productName}"؟\n\n⚠️ لا يمكن التراجع عن هذا الإجراء.\n\n• سيتم حذف المنتج نهائياً من قاعدة البيانات\n• سيتم حذف صورة المنتج إن وجدت\n• سيختفي المنتج من الصفحة الرئيسية`)) {
+                try {
+                    console.log('Deleting product:', productId);
+                    
+                    // Show loading state on the delete button
+                    const deleteBtn = event.target.closest('button');
+                    const originalBtnText = deleteBtn.innerHTML;
+                    deleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحذف...';
+                    deleteBtn.disabled = true;
+                    
+                    const response = await fetch('./api/api.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify({
+                            type: 'delete_product',
+                            product_id: productId
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    console.log('Delete response:', data);
+                    
+                    if (data.success) {
+                        // Show success message with product name
+                        alert(`✅ تم حذف "${productName}" بنجاح!\n\n• تم حذف المنتج من قاعدة البيانات\n• تم تحديث قائمة المنتجات`);
+                        
+                        // Reload products table
+                        loadProducts();
+                        
+                        // Refresh products in main page if function exists
+                        if (typeof window.refreshProducts === 'function') {
+                            await window.refreshProducts();
+                        }
+                    } else {
+                        alert('❌ فشل في حذف المنتج!\n\nالسبب: ' + (data.message || 'خطأ غير معروف'));
+                    }
+                    
+                } catch (error) {
+                    console.error('Error deleting product:', error);
+                    alert('❌ خطأ في الاتصال: ' + error.message);
+                } finally {
+                    // Reset button state if it still exists
+                    const deleteBtn = event.target.closest('button');
+                    if (deleteBtn) {
+                        deleteBtn.innerHTML = '<i class="fas fa-trash"></i> حذف';
+                        deleteBtn.disabled = false;
+                    }
+                }
+            }
+        }
+        
+        function viewOrder(orderId) {
+            alert('عرض تفاصيل الطلب: ' + orderId);
+        }
+        
+        async function viewUser(userId) {
+            const viewBtn = event.target.closest('button');
+            const originalContent = viewBtn.innerHTML;
+            
+            try {
+                console.log('Loading user details:', userId);
+                
+                // Show loading state
+                setButtonState(viewBtn, 'loading', '<i class="fas fa-spinner fa-spin"></i> <span>جاري التحميل...</span>');
+                
+                const response = await fetch('./api/api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        type: 'get_user_details',
+                        user_id: userId
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('User details response:', data);
+                
+                if (data.success) {
+                    // Show success state briefly
+                    setButtonState(viewBtn, 'success', '<i class="fas fa-check"></i> <span>تم التحميل</span>');
+                    
+                    const user = data.user;
+                    const detailsMessage = `
+👤 تفاصيل المستخدم
+${'='.repeat(30)}
+
+📝 الاسم الكامل: ${user.full_name}
+📧 البريد الإلكتروني: ${user.email || 'غير محدد'}
+📱 رقم الهاتف: ${user.phone || 'غير محدد'}
+👥 نوع الحساب: ${user.role}
+✅ حالة التفعيل: ${user.status}
+📰 الاشتراك في النشرة: ${user.newsletter ? 'مشترك' : 'غير مشترك'}
+📅 تاريخ التسجيل: ${new Date(user.created_at).toLocaleDateString('en-GB', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })}
+📅 آخر تحديث: ${new Date(user.updated_at).toLocaleDateString('en-GB', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })}
+
+🔍 معرف المستخدم: ${user.id}
+                    `;
+                    
+                    alert(detailsMessage);
+                } else {
+                    setButtonState(viewBtn, 'error', '<i class="fas fa-exclamation-triangle"></i> <span>خطأ</span>');
+                    alert('❌ فشل في تحميل تفاصيل المستخدم!\n\nالسبب: ' + (data.message || 'خطأ غير معروف'));
+                }
+                
+            } catch (error) {
+                console.error('Error loading user details:', error);
+                setButtonState(viewBtn, 'error', '<i class="fas fa-exclamation-triangle"></i> <span>خطأ</span>');
+                alert('❌ خطأ في الاتصال: ' + error.message);
+            } finally {
+                // Reset button state after 1.5 seconds
+                setTimeout(() => {
+                    resetButtonState(viewBtn, originalContent);
+                }, 1500);
+            }
+        }
+        
+        async function deleteUser(userId) {
+            // Get user name for better confirmation message
+            const userRow = event.target.closest('tr');
+            const userName = userRow?.cells[0]?.querySelector('strong')?.textContent || 'هذا المستخدم';
+            
+            if (confirm(`هل أنت متأكد من حذف "${userName}"؟\n\n⚠️ لا يمكن التراجع عن هذا الإجراء.\n\n• سيتم حذف الحساب نهائياً من قاعدة البيانات\n• سيفقد المستخدم جميع بياناته\n• لن يتمكن من تسجيل الدخول مرة أخرى`)) {
+                const deleteBtn = event.target.closest('button');
+                const originalContent = deleteBtn.innerHTML;
+                
+                try {
+                    console.log('Deleting user:', userId);
+                    
+                    // Show loading state
+                    setButtonState(deleteBtn, 'loading', '<i class="fas fa-spinner fa-spin"></i> <span>جاري الحذف...</span>');
+                    
+                    const response = await fetch('./api/api.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify({
+                            type: 'delete_user',
+                            user_id: userId
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    console.log('Delete user response:', data);
+                    
+                    if (data.success) {
+                        // Show success state
+                        setButtonState(deleteBtn, 'success', '<i class="fas fa-check"></i> <span>تم الحذف</span>');
+                        
+                        // Show success message with user name
+                        alert(`✅ تم حذف "${userName}" بنجاح!\n\n• تم حذف الحساب من قاعدة البيانات\n• تم تحديث قائمة المستخدمين`);
+                        
+                        // Reload users table after a short delay
+                        setTimeout(() => {
+                        loadUsers();
+                        }, 1000);
+                        
+                    } else {
+                        setButtonState(deleteBtn, 'error', '<i class="fas fa-exclamation-triangle"></i> <span>فشل</span>');
+                        alert('❌ فشل في حذف المستخدم!\n\nالسبب: ' + (data.message || 'خطأ غير معروف'));
+                    }
+                    
+                } catch (error) {
+                    console.error('Error deleting user:', error);
+                    setButtonState(deleteBtn, 'error', '<i class="fas fa-exclamation-triangle"></i> <span>خطأ</span>');
+                    alert('❌ خطأ في الاتصال: ' + error.message);
+                } finally {
+                    // Reset button state after 2 seconds (longer for delete operations)
+                    setTimeout(() => {
+                        if (deleteBtn && deleteBtn.parentNode) {
+                            resetButtonState(deleteBtn, originalContent);
+                        }
+                    }, 2000);
+                }
+            }
+        }
+        
+        function previewWebsite() {
+            // Navigate to main website in same window
+            try {
+                console.log('🌐 Starting website preview...');
+                console.log('Current URL:', window.location.href);
+                console.log('Current pathname:', window.location.pathname);
+                
+                // Multiple fallback options to ensure navigation works
+                let websiteUrl;
+                
+                // Option 1: Simple relative path (most reliable for local development)
+                if (window.location.pathname.endsWith('admin_new.html') || window.location.pathname.endsWith('/admin_new.html')) {
+                    websiteUrl = './index.html';
+                    console.log('✅ Using Option 1: Relative path');
+                } 
+                // Option 2: Replace the filename in current URL
+                else if (window.location.href.includes('admin_new.html')) {
+                    websiteUrl = window.location.href.replace('admin_new.html', 'index.html');
+                    console.log('✅ Using Option 2: URL replacement');
+                }
+                // Option 3: Build URL from base directory
+                else {
+                    const currentPath = window.location.pathname;
+                    const baseUrl = window.location.origin + currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                    websiteUrl = baseUrl + 'index.html';
+                    console.log('✅ Using Option 3: Base URL construction');
+                }
+                
+                console.log('🎯 Target URL:', websiteUrl);
+                
+                // Add loading overlay
+                document.body.style.transition = 'opacity 0.3s ease';
+                document.body.style.opacity = '0.8';
+                
+                // Navigate with a small delay to show loading effect
+                setTimeout(() => {
+                    console.log('🚀 Navigating now...');
+            window.location.href = websiteUrl;
+                }, 300);
+                
+                // Failsafe: if navigation doesn't work within 3 seconds
+                setTimeout(() => {
+                    console.warn('⚠️ Navigation timeout, trying fallback...');
+                    window.location.href = './index.html';
+                }, 3000);
+                
+            } catch (error) {
+                console.error('❌ Error in previewWebsite:', error);
+                
+                // Reset body opacity
+                document.body.style.opacity = '1';
+                
+                // Show user-friendly message
+                const confirmNavigation = confirm('سيتم فتح الموقع الرئيسي. هل تريد المتابعة؟');
+                if (confirmNavigation) {
+                    // Ultimate fallback options with user confirmation
+                    try {
+                        window.location.href = './index.html';
+                    } catch (e1) {
+                        try {
+                            window.location.href = 'index.html';
+                        } catch (e2) {
+                            try {
+                                window.location.href = '/index.html';
+                            } catch (e3) {
+                                // Last resort: open in new window
+                                window.open('./index.html', '_self');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        function logout() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Enhanced button state management functions
+        function setButtonState(button, state, content) {
+            if (!button) return;
+            
+            // Remove all state classes
+            button.classList.remove('loading', 'success', 'error');
+            
+            // Add the new state class
+            button.classList.add(state);
+            
+            // Update content
+            button.innerHTML = content;
+            
+            // Disable button for loading and error states
+            button.disabled = (state === 'loading');
+        }
+        
+        function resetButtonState(button, originalContent) {
+            if (!button) return;
+            
+            // Remove all state classes
+            button.classList.remove('loading', 'success', 'error');
+            
+            // Restore original content
+            button.innerHTML = originalContent;
+            
+            // Re-enable button
+            button.disabled = false;
+        }
+        
+        // Update current time in footer
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            const timeElement = document.getElementById('currentTime');
+            if (timeElement) {
+                timeElement.textContent = timeString;
+            }
+        }
+
+        // Load initial data
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            loadOrders();
+            loadUsers();
+            
+            // Update time immediately and then every second
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+        });
+    </script>
+</body>
+</html> 

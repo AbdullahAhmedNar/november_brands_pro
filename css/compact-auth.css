@@ -1,0 +1,214 @@
+/* Compact Auth Styles - للتأكد من ظهور جميع العناصر */
+
+/* تحسينات عامة للنماذج */
+.auth-card {
+    box-sizing: border-box;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* تحسين أحجام العناصر */
+.form-group {
+    min-height: auto;
+}
+
+.form-input {
+    height: auto;
+    min-height: 2.5rem;
+    box-sizing: border-box;
+}
+
+/* تحسين المساحات للشاشات الصغيرة جداً */
+@media (max-width: 360px) {
+    .auth-container {
+        margin: 0.1rem;
+        max-height: 98vh;
+    }
+    
+    .auth-card {
+        padding: 0.6rem;
+        max-height: 75vh;
+    }
+    
+    .auth-header {
+        margin-bottom: 0.6rem;
+    }
+    
+    .brand-logo h1 {
+        font-size: 1rem;
+        margin-bottom: 0.1rem;
+    }
+    
+    .brand-logo p {
+        font-size: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .auth-title {
+        font-size: 1rem;
+    }
+    
+    .auth-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .form-group {
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-input {
+        padding: 0.5rem 0.5rem 0.5rem 1.8rem;
+        font-size: 0.75rem;
+        min-height: 2.2rem;
+    }
+    
+    .input-icon {
+        left: 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .password-requirements {
+        padding: 0.3rem;
+        margin-top: 0.1rem;
+    }
+    
+    .requirement {
+        font-size: 0.6rem;
+        margin-bottom: 0.05rem;
+    }
+    
+    .auth-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .social-btn {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .auth-divider {
+        margin: 0.4rem 0;
+    }
+    
+    .auth-switch p {
+        font-size: 0.75rem;
+    }
+}
+
+/* تحسين السكرول للبطاقة */
+.auth-card::-webkit-scrollbar {
+    width: 3px;
+}
+
+.auth-card::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.auth-card::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 3px;
+}
+
+.auth-card::-webkit-scrollbar-thumb:hover {
+    background: #d1477a;
+}
+
+/* ضمان عدم قطع النص */
+.form-label,
+.auth-title,
+.auth-subtitle,
+.requirement span,
+.checkbox-wrapper {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* تحسين ارتفاع الخانات */
+.form-row .form-group {
+    flex: 1;
+}
+
+/* تحسين عرض متطلبات كلمة المرور */
+.requirements-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2rem;
+}
+
+@media (max-width: 480px) {
+    .requirements-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* تحسين عرض الأزرار */
+.auth-btn,
+.social-btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* تحسين المحاذاة */
+.auth-container {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* ضمان ظهور زر الإنشاء */
+@media (max-height: 700px) {
+    .auth-card {
+        max-height: 80vh;
+    }
+    
+    .password-requirements {
+        max-height: 8rem;
+        overflow-y: auto;
+    }
+}
+
+@media (max-height: 600px) {
+    .auth-card {
+        max-height: 85vh;
+    }
+    
+    .benefit-item {
+        display: none;
+    }
+    
+    .sidebar-content p {
+        display: none;
+    }
+    
+    .auth-sidebar {
+        min-height: 100px;
+    }
+}
+
+/* تحسين عرض النموذج على الشاشات القصيرة */
+@media (max-height: 500px) {
+    .auth-container {
+        max-height: 95vh;
+    }
+    
+    .auth-card {
+        max-height: 90vh;
+        padding: 0.5rem;
+    }
+    
+    .auth-sidebar {
+        display: none;
+    }
+    
+    .auth-container {
+        max-width: 500px;
+    }
+} 

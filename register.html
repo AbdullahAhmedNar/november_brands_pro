@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - NOVEMBER BRANDS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/compact-auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <div class="auth-background">
+        <div class="animated-bg-icons">
+            <i class="fas fa-crown bg-icon"></i>
+            <i class="fas fa-gem bg-icon"></i>
+            <i class="fas fa-magic bg-icon"></i>
+            <i class="fas fa-heart bg-icon"></i>
+            <i class="fas fa-star bg-icon"></i>
+            <i class="fas fa-sparkles bg-icon"></i>
+        </div>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="brand-logo">
+                    <h1>NOVEMBER BRANDS</h1>
+                    <p>by Taghreed Nar</p>
+                </div>
+                <h2 class="auth-title">Create Account</h2>
+                <p class="auth-subtitle">Join our beauty community</p>
+            </div>
+
+            <form id="registerForm" class="auth-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="firstName" 
+                                class="form-input" 
+                                placeholder="First name"
+                                required
+                                autocomplete="given-name"
+                            >
+                        </div>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="lastName" 
+                                class="form-input" 
+                                placeholder="Last name"
+                                required
+                                autocomplete="family-name"
+                            >
+                        </div>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email or Phone</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input 
+                            type="text" 
+                            id="registerEmail" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="Enter your email or phone number"
+                            required
+                            autocomplete="username"
+                        >
+                    </div>
+                    <div class="error-message" id="registerEmailError"></div>
+                    <div class="input-hint">
+                        <i class="fas fa-info-circle"></i>
+                        <span>We accept valid email addresses or phone numbers</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword" class="form-label">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input 
+                            type="password" 
+                            id="registerPassword" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="Create a strong password"
+                            required
+                            autocomplete="new-password"
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('registerPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="error-message" id="registerPasswordError"></div>
+                    
+                    <!-- Password Requirements -->
+                    <div class="password-requirements">
+                        <p class="requirements-title">Password must contain:</p>
+                        <ul class="requirements-list">
+                            <li id="req-length" class="requirement">
+                                <i class="fas fa-times"></i>
+                                <span>At least 8 characters</span>
+                            </li>
+                            <li id="req-letter" class="requirement">
+                                <i class="fas fa-times"></i>
+                                <span>At least one letter</span>
+                            </li>
+                            <li id="req-number" class="requirement">
+                                <i class="fas fa-times"></i>
+                                <span>At least one number</span>
+                            </li>
+                            <li id="req-symbol" class="requirement">
+                                <i class="fas fa-times"></i>
+                                <span>At least one symbol (!@#$%^&*)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            class="form-input" 
+                            placeholder="Confirm your password"
+                            required
+                            autocomplete="new-password"
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('confirmPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                    </label>
+                    <div class="error-message" id="termsError"></div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <span class="checkmark"></span>
+                        Subscribe to our newsletter for beauty tips and exclusive offers
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-btn" id="registerBtn">
+                    <span class="btn-text">Create Account</span>
+                    <div class="loading hidden" id="registerLoading"></div>
+                </button>
+
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+
+               
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="login.html">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-sidebar">
+            <div class="sidebar-content">
+                <h3>Join November Brands</h3>
+                <p>Create your account and unlock exclusive access to premium beauty products, personalized recommendations, and special member offers.</p>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <h4>Exclusive Access</h4>
+                            <p>Be the first to try new products</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <h4>Personalized Experience</h4>
+                            <p>Curated recommendations just for you</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <h4>Special Offers</h4>
+                            <p>Member-only discounts and promotions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-home">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header success-header">
+                <h3>Account Created Successfully!</h3>
+                <span class="close" onclick="closeSuccessModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Welcome to November Brands! Your account has been created successfully.</p>
+                <button class="modal-btn" onclick="redirectToLogin()">Continue to Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header error-header">
+                <h3>Registration Failed</h3>
+                <span class="close" onclick="closeErrorModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p id="errorMessage">An error occurred during registration. Please try again.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Initialize register page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRegisterPage();
+            
+            // Auto-fill form for testing (remove in production)
+            setTimeout(function() {
+                document.getElementById('firstName').value = 'أحمد';
+                document.getElementById('lastName').value = 'محمد';
+                document.getElementById('registerEmail').value = 'test' + Date.now() + '@example.com';
+                document.getElementById('registerPassword').value = 'Test123!@#';
+                document.getElementById('confirmPassword').value = 'Test123!@#';
+                document.getElementById('agreeTerms').checked = true;
+            }, 100);
+        });
+    </script>
+</body>
+</html> 
